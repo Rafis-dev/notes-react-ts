@@ -5,14 +5,15 @@ import { NewNote } from './NewNote';
 import { useLocalStorage } from './hooks/useLocalStorage';
 import { useMemo } from 'react';
 import { v4 as uuidV4 } from 'uuid';
+import { NoteList } from './NoteList';
 
-export type Note = {
+export type Note = NoteData & {
   id: string;
-} & NoteData;
+};
 
-export type RawNote = {
+export type RawNote = RawNoteData & {
   id: string;
-} & RawNoteData;
+};
 
 export type RawNoteData = {
   title: string;
@@ -60,7 +61,10 @@ export const App = () => {
   return (
     <Container className="my-4">
       <Routes>
-        <Route path="/" element={<h1>Главная страница</h1>} />
+        <Route
+          path="/"
+          element={<NoteList notes={notesWithTags} availableTags={tags} />}
+        />
         <Route
           path="/new"
           element={
