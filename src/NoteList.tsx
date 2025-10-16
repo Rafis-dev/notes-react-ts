@@ -25,9 +25,16 @@ type SimplifiedNote = {
   id: string;
 };
 
+type EditTagsModalProps = {
+  show: boolean;
+  availableTags: Tag[];
+  handleClose: () => void;
+};
+
 export const NoteList = ({ availableTags, notes }: NoteListProps) => {
   const [selectedTags, setSelectedTags] = useState<Tag[]>([]);
   const [title, setTitle] = useState('');
+  const [modalOpen, setModalOpen] = useState(false);
 
   const filteredNotes = useMemo(() => {
     return notes.filter(note => {
@@ -74,6 +81,36 @@ export const NoteList = ({ availableTags, notes }: NoteListProps) => {
     );
   };
 
+  const EditTagsModal = ({
+    availableTags,
+    handleClose,
+    show,
+  }: EditTagsModalProps) => {
+    return (
+      <Modal show={show} onHide={handleClose}>
+        <Modal.Header closeButton>
+          <Modal.Title>Edit Tags</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          <Form>
+            <Stack gap={2}>
+              {availableTags.map(tag => (
+                <Row key={tag.id}>
+                  <Col>
+                    <Form.Control type="text" value={tag.label} />
+                  </Col>
+                  <Col xs="auto">
+                    <Button variant="outline-danger">&times;</Button>
+                  </Col>
+                </Row>
+              ))}
+            </Stack>
+          </Form>
+        </Modal.Body>
+      </Modal>
+    );
+  };
+
   return (
     <>
       <Row className="align-items-center mb-4">
@@ -85,7 +122,14 @@ export const NoteList = ({ availableTags, notes }: NoteListProps) => {
             <Link to="/new">
               <Button variant="primary">Create</Button>
             </Link>
-            <Button variant="outline-secondary">Edit Tags</Button>
+            <Button
+              onClick={() => {
+                setModalOpen(true);
+              }}
+              variant="outline-secondary"
+            >
+              Edit Tags
+            </Button>
           </Stack>
         </Col>
       </Row>
@@ -131,6 +175,13 @@ export const NoteList = ({ availableTags, notes }: NoteListProps) => {
           </Col>
         ))}
       </Row>
+      <EditTagsModal
+        show={modalOpen}
+        handleClose={() => {
+          setModalOpen(false);
+        }}
+        availableTags={availableTags}
+      />
     </>
   );
 };
