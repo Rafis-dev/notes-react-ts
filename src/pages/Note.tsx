@@ -1,11 +1,8 @@
 import { Badge, Button, Col, Row, Stack } from 'react-bootstrap';
-import { useNote } from './hooks/useNote';
+import { useNote } from '../hooks/useNote';
 import { Link, useNavigate } from 'react-router-dom';
 import ReactMarkDown from 'react-markdown';
-
-type NoteProps = {
-  onDelete: (id: string) => void;
-};
+import type { NoteProps } from '../types';
 
 export const Note = ({ onDelete }: NoteProps) => {
   const note = useNote();

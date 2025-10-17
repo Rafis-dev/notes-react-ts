@@ -1,11 +1,5 @@
-import type { NoteData, Tag } from './App';
-import { NoteForm } from './NoteForm';
-
-type NewNoteProps = {
-  onSubmit: (data: NoteData) => void;
-  onAddTag: (tag: Tag) => void;
-  availableTags: Tag[];
-};
+import { NoteForm } from '../components/NoteForm';
+import type { NewNoteProps } from '../types';
 
 export const NewNote = ({
   onSubmit,
