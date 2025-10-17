@@ -14,7 +14,11 @@ export const Note = ({ onDelete }: NoteProps) => {
         <Col>
           <h1>{note.title}</h1>
           {note.tags.length > 0 && (
-            <Stack gap={1} direction="horizontal" className="flex-wrap">
+            <Stack
+              gap={1}
+              direction="horizontal"
+              className="flex-wrap mb-3 mb-sm-0"
+            >
               {note.tags.map(tag => (
                 <Badge className="text-truncate" key={tag.id}>
                   {tag.label}
