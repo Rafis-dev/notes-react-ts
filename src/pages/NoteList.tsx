@@ -100,9 +100,6 @@ export const NoteList = ({
         handleClose={() => {
           setModalOpen(false);
         }}
-        handleEnter={() => {
-          setModalOpen(false);
-        }}
         availableTags={availableTags}
       />
     </>

@@ -1,6 +1,5 @@
 import { Modal, Form, Stack, Row, Col, Button } from 'react-bootstrap';
 import type { EditTagsModalProps } from '../types';
-import { useEffect, useRef } from 'react';
 
 export const EditTagsModal = ({
   availableTags,
@@ -9,7 +8,12 @@ export const EditTagsModal = ({
   onUpdateTag,
   onDeleteTag,
 }: EditTagsModalProps) => {
-  const editInputRef = useRef(null);
+  const handleKeyDown = (e: React.KeyboardEvent) => {
+    if (e.key === 'Enter') {
+      e.preventDefault();
+      handleClose();
+    } else return;
+  };
 
   return (
     <Modal show={show} onHide={handleClose}>
@@ -23,10 +27,10 @@ export const EditTagsModal = ({
               <Row key={tag.id}>
                 <Col>
                   <Form.Control
-                    ref={editInputRef}
                     type="text"
                     value={tag.label}
                     onChange={e => onUpdateTag(tag.id, e.target.value)}
+                    onKeyDown={handleKeyDown}
                   />
                 </Col>
                 <Col xs="auto">
