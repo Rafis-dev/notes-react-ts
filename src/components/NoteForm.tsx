@@ -42,6 +42,7 @@ export const NoteForm = ({
             <Form.Group controlId="tags">
               <Form.Label>Tags</Form.Label>
               <CreatableReactSelect
+                inputId="tags"
                 onCreateOption={label => {
                   const newTag = { id: uuidV4(), label };
                   onAddTag(newTag);
