@@ -35,7 +35,7 @@ export const Note = ({ onDelete }: NoteProps) => {
             <Button
               onClick={() => {
                 onDelete(note.id);
-                navigate('/');
+                navigate('/', { replace: true });
               }}
               variant="outline-danger"
             >
