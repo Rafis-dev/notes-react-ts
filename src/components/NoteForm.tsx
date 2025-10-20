@@ -4,7 +4,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import CreatableReactSelect from 'react-select/creatable';
 import { v4 as uuidV4 } from 'uuid';
 import type { NoteFormProps, Tag } from '../types';
-
+// форма создания и редактирования заметок
 export const NoteForm = ({
   onSubmit,
   onAddTag,
@@ -34,14 +34,15 @@ export const NoteForm = ({
         <Row>
           <Col>
             <Form.Group controlId="title">
-              <Form.Label>Title</Form.Label>
+              <Form.Label>Название</Form.Label>
               <Form.Control ref={titleRef} required defaultValue={title} />
             </Form.Group>
           </Col>
           <Col>
             <Form.Group controlId="tags">
-              <Form.Label>Tags</Form.Label>
+              <Form.Label>Теги</Form.Label>
               <CreatableReactSelect
+                placeholder="Создайте тег"
                 inputId="tags"
                 onCreateOption={label => {
                   const newTag = { id: uuidV4(), label };
@@ -67,7 +68,7 @@ export const NoteForm = ({
           </Col>
         </Row>
         <Form.Group controlId="markdown">
-          <Form.Label>Body</Form.Label>
+          <Form.Label>Текст</Form.Label>
           <Form.Control
             ref={markdownRef}
             required
@@ -79,11 +80,11 @@ export const NoteForm = ({
         </Form.Group>
         <Stack direction="horizontal" gap={2} className="justify-content-end">
           <Button type="submit" variant="primary">
-            Save
+            Сохранить
           </Button>
           <Link to="..">
             <Button type="button" variant="outline-secondary">
-              Cancel
+              Отмена
             </Button>
           </Link>
         </Stack>

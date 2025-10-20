@@ -33,12 +33,12 @@ export const NoteList = ({
     <>
       <Row className="align-items-center mb-4">
         <Col>
-          <h1>Notes</h1>
+          <h1>Ваши заметки</h1>
         </Col>
         <Col xs="auto">
           <Stack gap={2} direction="horizontal">
             <Link to="/new">
-              <Button variant="primary">Create</Button>
+              <Button variant="primary">Создать</Button>
             </Link>
             <Button
               onClick={() => {
@@ -46,7 +46,7 @@ export const NoteList = ({
               }}
               variant="outline-secondary"
             >
-              Edit Tags
+              Редактировать теги
             </Button>
           </Stack>
         </Col>
@@ -55,7 +55,7 @@ export const NoteList = ({
         <Row className="mb-4">
           <Col>
             <Form.Group controlId="title">
-              <Form.Label>title</Form.Label>
+              <Form.Label>Название</Form.Label>
               <Form.Control
                 type="text"
                 value={title}
@@ -65,8 +65,9 @@ export const NoteList = ({
           </Col>
           <Col>
             <Form.Group controlId="tags">
-              <Form.Label>Tags</Form.Label>
+              <Form.Label>Теги</Form.Label>
               <ReactSelect
+                placeholder="Выберите тег"
                 value={selectedTags.map(tag => {
                   return { label: tag.label, value: tag.id };
                 })}

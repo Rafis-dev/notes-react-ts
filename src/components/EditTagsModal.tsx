@@ -8,6 +8,7 @@ export const EditTagsModal = ({
   onUpdateTag,
   onDeleteTag,
 }: EditTagsModalProps) => {
+  
   const handleKeyDown = (e: React.KeyboardEvent) => {
     if (e.key === 'Enter') {
       e.preventDefault();
@@ -18,7 +19,7 @@ export const EditTagsModal = ({
   return (
     <Modal show={show} onHide={handleClose}>
       <Modal.Header closeButton>
-        <Modal.Title>Edit Tags</Modal.Title>
+        <Modal.Title>Редактировать теги</Modal.Title>
       </Modal.Header>
       <Modal.Body>
         <Form>

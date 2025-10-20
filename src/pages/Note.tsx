@@ -30,7 +30,7 @@ export const Note = ({ onDelete }: NoteProps) => {
         <Col xs="auto">
           <Stack gap={2} direction="horizontal">
             <Link to={`/${note.id}/edit`}>
-              <Button variant="primary">Edit</Button>
+              <Button variant="primary">Редактировать</Button>
             </Link>
             <Button
               onClick={() => {
@@ -39,10 +39,10 @@ export const Note = ({ onDelete }: NoteProps) => {
               }}
               variant="outline-danger"
             >
-              Delete
+              Удалить
             </Button>
             <Link to="/">
-              <Button variant="outline-secondary">Back</Button>
+              <Button variant="outline-secondary">Назад</Button>
             </Link>
           </Stack>
         </Col>
